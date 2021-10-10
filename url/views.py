@@ -47,7 +47,7 @@ class URLCreate(View):
         probs = request.headers['probs'].split(",")  # str > string list
 
         # Creates model objects for each destination
-        assert (len(dests) == len(probs), "Destinations not the same length")
+        assert len(dests) == len(probs), "Destinations not the same length"
         destinations = [Destination.objects.create(views=0, url=dests[i], prob=float(probs[i])) for i in
                         range(len(dests))]
 
