@@ -2,3 +2,4 @@ django
 django-heroku
 psycopg2
 dj-database-url
+gunicorn
