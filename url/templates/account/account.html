@@ -13,8 +13,8 @@
                 {% for url in request.user.urls.all %}
                     <li class="list-group-item">
                         <div class="container">
-                            <a class="btn btn-primary"
-                               href="{% url 'random' url.link_string %}">Link: {{ url.link_string }}</a>
+                            <a class="viewlink"
+                               href="{% url 'random' url.link_string %}">{{ request.build_absolute_uri}}/{{ url.link_string }}</a>
                             <a class="btn btn-info"
                                href="{% url 'random-info' url.link_string %}">Info</a>
                             <a class="btn btn-warning" href="{% url 'url-edit' url.link_string %}">Edit</a>
