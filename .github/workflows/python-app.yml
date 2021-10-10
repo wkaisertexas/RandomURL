@@ -35,4 +35,4 @@ jobs:
       run: python manage.py migrate
     - name: Test with Djago Test
       run: |
-        python manage.py test
+        python3 manage.py test
