@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from os.path import join
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-qcid@*v)-oe4km)*&d-x4_k+ny$mkcqn9$&^v8rx%cf%m1&*j#'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-qcid@*v)-oe4km)*&d-x4_k+ny$mkcqn9$&^v8rx%cf%m1&*j#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['127.0.0.1', 'random-url-generator.herokuapp.com']
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -77,8 +79,12 @@ WSGI_APPLICATION = 'RandomURL.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'deqqc3hc8u05c0',
+        'HOST': 'ec2-18-211-194-36.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'emksvbfwtpbupn',
+        'PASSWORD': '7ed9665d1819266f676448f2d6d2145aea92855a582bc3b2a8fc891f36221b81'
     }
 }
 
@@ -86,7 +92,7 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-
+# postgres://emksvbfwtpbupn:7ed9665d1819266f676448f2d6d2145aea92855a582bc3b2a8fc891f36221b81@ec2-18-211-194-36.compute-1.amazonaws.com:5432/deqqc3hc8u05c0
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -125,6 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

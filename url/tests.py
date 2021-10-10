@@ -2,7 +2,7 @@ import random
 
 from django.test import TestCase
 
-from .models import URL, Destination, User
+from models import URL, Destination, User
 
 NUMBER_OF_TRIALS = 10 ** 4
 DECIMALS_CORRECT = 2
