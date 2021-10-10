@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block scripts %}
+    <script src="{% static 'edit_url.js' %}"></script>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create URL</h4>
+                <p class="card-text">Use the sliders and the URL boxes to determine a custom shortened URL
+                    redirector.</p><a
+                    class="card-link" href="#">Account</a><a class="card-link" href="#">Home</a>
+            </div>
+        </div>
+
+        <h3>Destinations</h3>
+
+        <ol class="list-group list-group-numbered" id="url-list">
+            {% for item in url.destinations.all %}
+                <div class="list-group-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col"><input type="range" min="1" max="100" value="{{ item.get_value }}"></div>
+                            <div class="col"><h5>{{ item.pp_prob }}</h5><h5>{{ item.views }} views</h5></div>
+                        </div>
+                        <div class="row">
+                            <div class="col"><input type="text" placeholder="Put your URL here" value="{{ item.url }}"></div>
+                            <div class="col">
+                                <button class="btn btn-primary">Remove Destination</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </ol>
+
+        <button id="add-button" class="btn btn-primary" type="button">Add Destination</button>
+        <hr>
+        <button id="edit-url" class="btn btn-warning" type="button" style="text-align: left;">Update URL</button>
+    </div>
+{% endblock %}

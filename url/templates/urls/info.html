@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="col d-flex justify-content-center">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Information for {{ url.link_string }}</h5>
+                {% if request.user == url.owner %}
+                    <h6 class="card-subtitle">URL has been used {{ url.get_views }} times</h6>
+                {% endif %}
+                <a class="btn btn-primary justify-content-center" href="{% url 'random' url.link_string %}">Use Link</a>
+            </div>
+            <ul class="list-group">
+                {% for dest in url.destinations.all %}
+                    <li class="list-group-item">{{ dest.pp_prob }} - <a href="{{ dest.url }}">{{ dest.url }}</a>
+                        {% if request.user == url.owner %}
+                            with {{ dest.views }} views
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}

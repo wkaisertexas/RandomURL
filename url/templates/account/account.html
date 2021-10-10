@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <br>
+    <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 50%;">
+            <div class="card-body">
+                <h3 class="card-title">User: {{ request.user.username }}</h3>
+            </div>
+
+            <h5>Created URLs:</h5>
+            <ul class="list-group list-group-flush">
+                {% for url in request.user.urls.all %}
+                    <li class="list-group-item">
+                        <div class="container">
+                            <a class="btn btn-primary"
+                               href="{% url 'random' url.link_string %}">Link: {{ url.link_string }}</a>
+                            <a class="btn btn-info"
+                               href="{% url 'random-info' url.link_string %}">Info</a>
+                            <a class="btn btn-warning" href="{% url 'url-edit' url.link_string %}">Edit</a>
+                            <a class="btn btn-danger"
+                               href="{% url 'url-delete' url.id %}">Delete</a>
+                        </div>
+                    </li>
+                {% endfor %}
+
+                {% if not request.user.urls.all %}
+                    <li class="list-group-item">The user has not created any urls.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <br>
+
+    <div class="col d-flex justify-content-center">
+        <a class="btn btn-primary" href="{% url 'url-create' %}" role="button">Create URLs</a>
+    </div>
+{% endblock %}

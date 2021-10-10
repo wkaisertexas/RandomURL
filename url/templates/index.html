@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="px-4 pt-5 my-5 text-center border-bottom" xmlns="http://www.w3.org/1999/html">
+        <h1 class="display-4 fw-bold">Build Random URLS</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Randomness is the spice of life. It is fun. So why not be random online? Why go where
+                you want to go when you can go anywhere? With this website, create shortened URLs that can redirect to
+                any number of sites. You define the odds the user goes to each of these sites, and then it just
+                works.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'url-create' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Create Link</a>
+                {% else %}
+                    <a href="{% url 'account-creation' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Create Account</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="overflow-hidden" style="max-height: 50vh;">
+            <div class="container px-5">
+                <img src="{% static 'account_page.png' %}" class="img-fluid border rounded-3 shadow-lg mb-4"
+                     alt="Example image" width="400" height="800" loading="lazy">
+            </div>
+        </div>
+    </div>
+    <div class="b-example-divider"></div>
+
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% static 'editing_url.png' %}" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
+                     width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Sample Random Link</h1>
+                <p class="lead">This link has a equal chance of taking you to the websites of FANG. Try it out for
+                    yourselves to see the randomness in action.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a class="btn btn-primary btn-lg px-4 me-md-2" href="{% url 'random' 'abcdefghijk' %}">Check the
+                        link out</a><!-- TODO: Add an on-submit event listener -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container px-4 py-5" id="why">
+        <h2 class="pb-2 border-bottom">Why</h2>
+        <p>I thought that if the QR code of a poster for a club took people to different locations then people would be
+            more interested. <br></br>Additionally, a single link can be updated over time can be for multiple clubs
+            with each club (IE. 50% DECA or 50% QuizBowl) <br></br> So instead of putting up posters for each event,
+            there could be a single poster that gets updated over time. Really the benefit to this is what you make of
+            it.</p>
+    </div>
+
+    <div class="container px-4 py-5" id="faq">
+        <h2 class="pb-2 border-bottom">FAQs</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <h2>Privacy</h2>
+                <p>No tracking of user information who uses the site. The only data tracked about a link is how many
+                    times people have visited it and the sites that they have been redirected to (a tool for link
+                    creators).</p>
+            </div>
+            <div class="feature col">
+                <h2>Cost</h2>
+                <p>This application is free to use without advertisements / tracking. This is just a cool project that I
+                    wanted to make.</p>
+            </div>
+            <div class="feature col">
+                <h2>Speed</h2>
+                <p>Queries run with average response times of <100 ms.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

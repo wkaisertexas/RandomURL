@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <br>
+    <div class="container">
+        <header class="h5">Create Your Account</header>
+        <form method="post">
+        <div class="form-floating">
+            {% csrf_token %}
+
+            <h1 class="h3 mb-3 fw-normal">Please create an account</h1>
+
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="james123">
+                    <label for="floatingInput">Username</label>
+                </div>
+
+                <br>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" name="password1" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" name="password2" placeholder="Password">
+                    <label for="floatingPassword">Confirm Password</label>
+                </div>
+
+                <br>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Create Account</button>
+                {% if form.errors %}
+                    <p class="label label-danger">
+                        {{ form.errors }}
+                    </p>
+                {% endif %}
+        </div>
+        </form>
+    </div>
+
+{% endblock %}

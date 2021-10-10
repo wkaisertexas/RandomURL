@@ -1,0 +1,15 @@
+name: Testing
+on: push
+
+jobs:
+  test_projects:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run:
+          name: Run Django Unit Tests
+          command: |
+            . venv/bin/activate
+            pip3 install -r requirements.txt
+            python3 manage.py test
+
