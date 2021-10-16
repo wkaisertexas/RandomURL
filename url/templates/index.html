@@ -5,10 +5,9 @@
     <div class="px-4 pt-5 my-5 text-center border-bottom" xmlns="http://www.w3.org/1999/html">
         <h1 class="display-4 fw-bold">Build Random URLS</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Randomness is the spice of life. So why not be random online? Why go where
+            <p class="lead mb-4">Randomness is the spice of life, so why not be random online? Why go where
                 you want to go? Create shortened URLs that can redirect to
-                multiple sites, randomly. Define the odds the user goes to each of these sites, and then it just
-                works.</p>
+                multiple sites, randomly. Define the odds the user goes to each of these sites, and then, the user gets randomly sent to these destinations.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'url-create' %}" class="btn btn-primary btn-lg px-4 me-sm-3">Create Link</a>
@@ -34,10 +33,10 @@
             </div>
             <div class="col-lg-6">
                 <h1 class="display-5 fw-bold lh-1 mb-3">Sample Random Link</h1>
-                <p class="lead">This link has a equal chance of taking you to the websites of FANG. Try it out for
+                <p class="lead">This link has a equal chance of taking you to the websites of FAMG (no FANG). Try it out for
                     yourselves to see the randomness in action.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a class="btn btn-primary btn-lg px-4 me-md-2" href="{% url 'random' 'abcdefghijk' %}">Check the
+                    <a class="btn btn-primary btn-lg px-4 me-md-2" href="{% url 'random' '1IPhWhM8qE' %}">Check the
                         link out</a><!-- TODO: Add an on-submit event listener -->
                 </div>
             </div>
