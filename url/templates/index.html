@@ -5,9 +5,9 @@
     <div class="px-4 pt-5 my-5 text-center border-bottom" xmlns="http://www.w3.org/1999/html">
         <h1 class="display-4 fw-bold">Build Random URLS</h1>
         <div class="col-lg-6 mx-auto">
-            <p class="lead mb-4">Randomness is the spice of life. It is fun. So why not be random online? Why go where
-                you want to go when you can go anywhere? With this website, create shortened URLs that can redirect to
-                any number of sites. You define the odds the user goes to each of these sites, and then it just
+            <p class="lead mb-4">Randomness is the spice of life. So why not be random online? Why go where
+                you want to go? Create shortened URLs that can redirect to
+                multiple sites, randomly. Define the odds the user goes to each of these sites, and then it just
                 works.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                 {% if request.user.is_authenticated %}
@@ -69,7 +69,7 @@
             </div>
             <div class="feature col">
                 <h2>Speed</h2>
-                <p>Queries run with average response times of <100 ms.</p>
+                <p>Queries run with average response times of <100 ms. Most of the time. The initial request takes longer due to Heroku being Heroku.</p>
             </div>
         </div>
     </div>

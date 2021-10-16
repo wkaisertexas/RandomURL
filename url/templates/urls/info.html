@@ -4,11 +4,16 @@
     <div class="col d-flex justify-content-center">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Information for {{ url.link_string }}</h5>
+                <h5 class="card-title">Information for "<a
+                        href="{% url 'random' url.link_string %}">{{ url.link_string }}"</a></h5>
                 {% if request.user == url.owner %}
-                    <h6 class="card-subtitle">URL has been used {{ url.get_views }} times</h6>
+                    <h7 class="card-subtitle">URL has been used {{ url.get_views }} times</h7>
                 {% endif %}
-                <a class="btn btn-primary justify-content-center" href="{% url 'random' url.link_string %}">Use Link</a>
+                <div class="card-body">
+                    <p>Link: <a
+                            href="{% url 'random' url.link_string %}">{{ request.scheme }}://{{ request.get_host }}/{{ url.link_string }}</a>
+                    </p>
+                </div>
             </div>
             <ul class="list-group">
                 {% for dest in url.destinations.all %}
