@@ -43,7 +43,7 @@ function create_list_element(n, percent, dest){
     bottom_col_2.append(button);
 
     let text_input = document.createElement("input");
-    text_input.type = "text";
+    text_input.type = "url";
     text_input.placeholder = "Put your URL here";
     text_input.id = `text-${n}`;
 
