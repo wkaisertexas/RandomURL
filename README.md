@@ -10,7 +10,7 @@ www.amazon.com 35%
 www.microsoft.com 40%
 ```
 
-The project is created using django.
+The project was created using django.
 
 Site users can change the destination / probability of going to a site after the fact by editing urls in their profile. This way if a QR code is already posted somewhere public, it can be changed easily.
 
