@@ -55,7 +55,7 @@ class URLCreate(View):
             item.save()
 
         # Creates a new url object
-        url = URL.objects.create(owner=request.user)
+        url = URL.objects.create(title=request.headers['title'], owner=request.user)
         url.set_link_string()
         for item in destinations:
             url.destinations.add(item)
@@ -115,6 +115,8 @@ class URLEdit(View):
                 dest.save()
 
                 url.destinations.add(dest)
+
+        url.title = request.headers['title']
 
         url.save()
 

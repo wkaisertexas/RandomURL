@@ -11,9 +11,18 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Create URL</h4>
-                <p class="card-text">Edit the custom shortened URL with random destinations. Use sliders to change the odds of being sent to each destination, and define the destination in the input box.<br><br>Note: adding the "https://" in front of the destination helps ensure the redirect works on all devices.</p><a
+                <p class="card-text">Edit the custom shortened URL with random destinations. Use sliders to change the
+                    odds of being sent to each destination, and define the destination in the input box.<br><br>Note:
+                    adding the "https://" in front of the destination helps ensure the redirect works on all devices.
+                </p><a
                     class="card-link" href="#">Account</a><a class="card-link" href="#">Home</a>
             </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Title</span>
+            <input id="url-title" type="text" class="form-control" placeholder="Title" aria-label="Title"
+                   aria-describedby="basic-addon1" value="{{ url.title }}">
         </div>
 
         <h3>Destinations</h3>
@@ -27,7 +36,8 @@
                             <div class="col"><h5>{{ item.pp_prob }}</h5><h5>{{ item.views }} views</h5></div>
                         </div>
                         <div class="row">
-                            <div class="col"><input type="url" placeholder="Put your URL here" value="{{ item.url }}"></div>
+                            <div class="col"><input type="url" placeholder="Put your URL here" value="{{ item.url }}">
+                            </div>
                             <div class="col">
                                 <button class="btn btn-primary">Remove Destination</button>
                             </div>

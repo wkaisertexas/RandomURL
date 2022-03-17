@@ -5,7 +5,7 @@
 {% block body %}
     <br>
     <div class="col d-flex justify-content-center">
-        <div class="card" style="width: 50%;">
+        <div class="card" style="padding:1.5%; width:75%;">
             <div class="card-body">
                 <h3 class="card-title">User: {{ request.user.username }}</h3>
             </div>
@@ -15,13 +15,18 @@
                 {% for url in request.user.urls.all %}
                     <li class="list-group-item">
                         <div class="container">
+                            <h6>
+                            {% if url.title %}
+                            {{ url.title }}:
+                            {% endif %}
                             <a class="viewlink"
                                href="{% url 'random' url.link_string %}">{{  request.get_host }}/{{ url.link_string }}</a>
                             <a class="btn btn-info"
                                href="{% url 'random-info' url.link_string %}">Info</a>
                             <a class="btn btn-warning" href="{% url 'url-edit' url.link_string %}">Edit</a>
                             <a class="btn btn-danger"
-                               href="{% url 'url-delete' url.id %}">Delete</a>
+                               href="{% url 'url-delete' url.id %}">Delete<g/a>
+                            </h6>
                         </div>
                     </li>
                 {% endfor %}

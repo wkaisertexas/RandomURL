@@ -17,18 +17,15 @@
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludePattern pattern="/venv/" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (RandomURL)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="QuizBowl" />
-  </component>
-  <component name="PyNamespacePackagesService">
-    <option name="namespacePackageFolders">
-      <list>
-        <option value="$MODULE_DIR$/url" />
-      </list>
-    </option>
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
+    <option name="TEMPLATE_FOLDERS">
+      <list>
+        <option value="$MODULE_DIR$/../QuizBowl/backend/templates" />
+      </list>
+    </option>
   </component>
 </module>

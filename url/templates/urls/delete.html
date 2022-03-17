@@ -6,10 +6,12 @@
             <div class="form-floating">
                 {% csrf_token %}
 
-                <h1 class="h3 mb-3 fw-normal">Are you sure you want to delete {{ object.link_string }}
+                <h1 class="h3 mb-3 fw-normal">Are you sure you want to delete {{ object.title }}
+                    at {{ object.link_string }}
                     with {{ object.get_views }}?</h1>
 
-                <input class="w-100 btn btn-lg btn-primary" onclick="gtag('event', 'Links', 'delete');" type="submit" value="Confirm">
+                <input class="w-100 btn btn-lg btn-primary" onclick="gtag('event', 'Links', 'delete');" type="submit"
+                       value="Confirm">
             </div>
         </form>
     </div>

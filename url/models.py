@@ -4,7 +4,7 @@ from random import random, choice
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-LINK_STRING_LENGTH = 10
+LINK_STRING_LENGTH = 8
 
 class User(AbstractUser):
     pass
@@ -27,7 +27,8 @@ class Destination(models.Model):
 
 
 class URL(models.Model):
-    link_string = models.CharField(max_length=10)  # TODO: Get rid of duplicate strings
+    title = models.CharField(max_length=50)
+    link_string = models.CharField(max_length=10)
     destinations = models.ManyToManyField(Destination, related_name="url_group")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="urls")
 

@@ -12,8 +12,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
         gtag('event', 'Links', 'create');
         
         let data = get_data();
+        let title = document.getElementById('url-title').value;
 
         let h = {
+            'title': title,
             'destinations': data['destinations'],
             'probs': data['probs'],
             'X-CSRFToken': window.CSRF_TOKEN
