@@ -8,7 +8,7 @@
             <div class="card-body">
 
                 <h5 class="card-title">Information for <a
-                        href="{% url 'random' url.link_string %}">{{ url.title }}"</a></h5>
+                        href="{% url 'random' url.link_string %}">{{ url.title }}</a></h5>
 
                 {% if request.user == url.owner %}
                     <h7 class="card-subtitle">URL has been used {{ url.get_views }} times</h7>
