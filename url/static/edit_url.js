@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     document.getElementById("edit-url").onclick = () => {
         // Google Analytics
-        ga('send', 'event', 'Links', 'edit');
+        gtag('event', 'Links', 'edit');
         
         let data = get_data();
 
