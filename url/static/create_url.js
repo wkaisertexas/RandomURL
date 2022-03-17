@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     };
 
     document.getElementById("create-url").onclick = () => {
+        // Google Analytics
+        ga('send', 'event', 'Links', 'create');
+        
         let data = get_data();
 
         let h = {
