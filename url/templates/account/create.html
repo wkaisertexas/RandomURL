@@ -29,7 +29,7 @@
 
                 <br>
 
-                <button class="w-100 btn btn-lg btn-primary" onclick="ga('send', 'event', 'Account', 'create');" type="submit">Create Account</button>
+                <button class="w-100 btn btn-lg btn-primary" onclick="gtag('event', 'Account', 'create');" type="submit">Create Account</button>
                 {% if form.errors %}
                     <p class="label label-danger">
                         {{ form.errors }}
