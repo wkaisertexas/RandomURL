@@ -7,6 +7,8 @@ urlpatterns = [
     path('account', AccountView.as_view(), name='account-view'),
     path('account/create', AccountCreation.as_view(), name='account-creation'),
     path('create', URLCreate.as_view(), name='url-create'),
+    path('privacy', PrivacyPolicy.as_view(), name='privacy'),
+    path('tos', TOS.as_view(), name='tos'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('<str:link_string>', get_dest, name='random'),
     path('<str:link_string>/', get_dest),  # Just allows the user to mess up and put a slash at the end

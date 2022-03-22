@@ -129,6 +129,14 @@ class URLEdit(View):
         return URL.objects.filter(link_string=link_string).first()
 
 
+class TOS(TemplateView):
+    template_name = 'misc/tos.html'
+
+
+class PrivacyPolicy(TemplateView):
+    template_name = 'misc/privacy.html'
+
+
 def get_dest(request, link_string):
     """
     Redirects the user to a random page.
