@@ -6,19 +6,20 @@
     <meta charset="UTF-8">
     <title>{% block title %}Random URL Shortener{% endblock %}</title>
 
-    <link rel="icon" href="{% static 'logo.png' %}">
+    <link rel="icon" href="{% static 'random.ico' %}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script>
-    
-    {% block meta %}
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-    <meta name="description" content="A URL shortener that has multiple, random destinations.">
-    <meta name="keywords" content="shortener, random, URL">
+
+    {% block meta %}
+    <meta name="description" content="Random URL allows for shortened URLs with multiple destinations. Specify where you want your user to be sent and the probability and get a shortened link.">
     {% endblock %}
-    
+
+    <meta name="keywords" content="shortener, random, URL, generate">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK2VHDQ674"></script>
     <script>
@@ -38,8 +39,8 @@
     <header class="p-3 bg-dark text-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                    <img class="bi me-2" role="img" aria-label="Random" src="{% static 'logo.png' %}"</img>
+                <a href="{% url 'index' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img alt="RandomURL logo" class="bi me-2" role="img" aria-label="Random" src="{% static 'logo.png' %}"></img>
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -74,8 +75,12 @@
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center">
                 <span class="text-muted">© 2021 Kaiser</span>
+                <br>
                 <span class="text-muted"><a href="{% url 'tos' %}">Terms of Service</a></span>
+                <br>
                 <span class="text-muted"><a href="{% url 'privacy' %}">Privacy Policy</a></span>
+                <br>
+                <a href="mailto:contact@randomurl.tech">Contact Us</a>
             </div>
         </footer>
     </div>

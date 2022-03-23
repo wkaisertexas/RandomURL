@@ -1,0 +1,6 @@
+User-agent: *
+
+# Disable the shortened URLs...
+
+Allow: /
+Sitemap: https://www.randomurl.tech/sitemap.xml

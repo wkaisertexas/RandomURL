@@ -129,12 +129,17 @@ class URLEdit(View):
         return URL.objects.filter(link_string=link_string).first()
 
 
+# MISC Stuff
 class TOS(TemplateView):
     template_name = 'misc/tos.html'
 
 
 class PrivacyPolicy(TemplateView):
     template_name = 'misc/privacy.html'
+
+
+class Robots(TemplateView):
+    template_name = "robots.txt"
 
 
 def get_dest(request, link_string):
