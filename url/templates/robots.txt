@@ -2,5 +2,13 @@ User-agent: *
 
 # Disable the shortened URLs...
 
+Disallow: */
+Disallow: *
+Allow: */info/
 Allow: /
+Allow: /tos/
+Allow: /privacy/
+Allow: /accounts/login/
+Allow: /accounts/create/
+
 Sitemap: https://www.randomurl.tech/sitemap.xml
