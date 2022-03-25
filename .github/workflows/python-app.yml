@@ -36,3 +36,4 @@ jobs:
     - name: Test with Djago Test
       run: |
         python3 manage.py test
+      
