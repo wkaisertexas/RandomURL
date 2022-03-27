@@ -140,6 +140,7 @@ class PrivacyPolicy(TemplateView):
 
 class Robots(TemplateView):
     template_name = "robots.txt"
+    content_type = "text/plain"
 
 
 def get_dest(request, link_string):
