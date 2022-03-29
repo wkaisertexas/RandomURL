@@ -1,7 +1,7 @@
 from urllib.parse import urlparse
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import HttpResponseRedirect, get_object_or_404, render
+from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, View, CreateView, DeleteView
@@ -152,8 +152,10 @@ def get_dest(request, link_string):
     url = urlparse(dest.get_destination())
     if not url.scheme:
         url = url._replace(scheme="http")
-
-    return HttpResponseRedirect(url.geturl())
+        
+    response = redirect(url.geturl())
+    response.status_code = 307 # Prevents Caching
+    return response
 
 
 def get_dest_info(request, link_string):
