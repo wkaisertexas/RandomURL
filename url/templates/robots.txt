@@ -10,5 +10,7 @@ Allow: /tos/
 Allow: /privacy/
 Allow: /accounts/login/
 Allow: /accounts/create/
+Allow: /robots.txt
+Allow: /sitemap.xml
 
 Sitemap: https://www.randomurl.tech/sitemap.xml
