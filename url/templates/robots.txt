@@ -2,9 +2,9 @@ User-agent: *
 
 # Disable the shortened URLs...
 
-Disallow: */
-Disallow: *
-Allow: */info/
+
+Disallow: /admin/
+Allow: /*/info/
 Allow: /
 Allow: /tos/
 Allow: /privacy/
