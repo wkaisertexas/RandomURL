@@ -40,7 +40,22 @@
 
         function onSignIn(googleUser){
             // sends a request to the server
-
+            var id_token = googleUser.getAuthResponse().id_token;
+            fetch('/autheticate_token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': window.CSRF_TOKEN
+                },
+                body: JSON.stringify({
+                    'id_token': id_token
+                })
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                window.location.href = '{% url 'account' %}';
+            });
         }
 
         function signOut() {
