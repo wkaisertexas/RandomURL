@@ -176,7 +176,7 @@ def authenticate_user(request):
     """Authenticates a user, and returns the user's information."""
     
     # gets the token from the request
-    token = request.headers.get('Authorization')
+    token = request.POST.get('idtoken')
 
     if token is None:
         return HttpResponseRedirect(reverse_lazy('index'))

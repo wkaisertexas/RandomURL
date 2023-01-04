@@ -21,7 +21,13 @@
     <meta name="description" content="Random URL allows for shortened URLs with multiple destinations. Specify where you want your user to be sent and the probability and get a shortened link.">
     {% endblock %}
 
-    <meta name="keywords" content="shortener, random, URL, generate">
+    <meta name="keywords" content="shortener, random, URL, generate, html, prank">
+    <meta name="author" content="Kaiser">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZK2VHDQ674"></script>
@@ -31,6 +37,31 @@
         gtag('js', new Date());
 
         gtag('config', 'G-ZK2VHDQ674');
+
+        function onSignIn(googleUser){
+            // sends a request to the server
+
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+
+            fetch('/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': window.CSRF_TOKEN
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+                window.location.href = '';
+            });
+
     </script>
     
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -64,7 +95,7 @@
                     {% else %}
                         <a href="{% url 'login' %}" class="btn btn-primary btn-lg active" role="button"
                            aria-pressed="true">Login</a>
-                        <div class="g-signin2" data-onsuccess="onSignIn">Login with Google</div>
+                        <div class="g-signin2" data-onsuccess="onSignIn" />
                         <a href="{% url 'account-creation' %}" class="btn btn-primary btn-lg active" role="button"
                            aria-pressed="true">Sign Up</a>
                     {% endif %}

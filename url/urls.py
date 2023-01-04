@@ -23,5 +23,6 @@ urlpatterns = [
     path('<str:link_string>/', get_dest),  # Just allows the user to mess up and put a slash at the end
     path('<str:link_string>/info/', get_dest_info, name='random-info'),
     path('<str:link_string>/edit/', URLEdit.as_view(), name='url-edit'),
-    path('<int:pk>/delete/', URLDelete.as_view(), name='url-delete')
+    path('<int:pk>/delete/', URLDelete.as_view(), name='url-delete'),
+    path('authenticate_token/', authenticate_user, name='authenticate-user'),
 ]
