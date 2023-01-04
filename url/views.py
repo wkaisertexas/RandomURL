@@ -5,10 +5,16 @@ from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, re
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView, View, CreateView, DeleteView
+from django.contrib.auth import login, logout
+
+from google.oauth2 import id_token
+from google.auth.transport import requests
 
 from .forms import *
 from .models import *
 from bots import is_bot
+
+CLIENT_ID = "773799551224-26h68o05tobeef832aemshm4dr6ff8a9.apps.googleusercontent.com"
 
 class Index(TemplateView):
     template_name = 'index.html'
@@ -153,7 +159,7 @@ def get_dest(request, link_string):
     dest = get_object_or_404(URL, link_string=link_string)
 
     url = urlparse(dest.get_destination())
-    if not url.scheme:
+    if not url.scheme or url.scheme not in ['http', 'https']: 
         url = url._replace(scheme="http")
         
     response = redirect(url.geturl())
@@ -165,3 +171,35 @@ def get_dest_info(request, link_string):
     """Provides information about a destination. View count if the user is logged in."""
     url = get_object_or_404(URL, link_string=link_string)
     return render(request, "urls/info.html", {'url': url})
+
+def authenticate_user(request):
+    """Authenticates a user, and returns the user's information."""
+    
+    # gets the token from the request
+    token = request.headers.get('Authorization')
+
+    if token is None:
+        return HttpResponseRedirect(reverse_lazy('index'))
+    
+    try:
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+
+        # gets the user's google account id from the decoded token
+        id = idinfo.get('sub') 
+
+        # takes the user id and gets the user object from the database
+        user = User.objects.filter(email=id).first()
+
+        if user:
+            # if the user exists, log them in
+            login(request, user)
+            return HttpResponseRedirect(reverse_lazy('account-view')) # go to to the account view
+        else:
+            # no user exits, create a new user and log them in
+            user = User.objects.create(email=id)
+            user.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse_lazy('account-view')) # go to to the account view
+    except ValueError:
+        # Invalid token (I could handle this in a nicer way, but I think just sending them back to the homepage should be fine)
+        return HttpResponseRedirect(reverse_lazy('index'))

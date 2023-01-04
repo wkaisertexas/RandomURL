@@ -3,7 +3,7 @@ from random import random, choice
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
+~
 LINK_STRING_LENGTH = 8
 
 class User(AbstractUser):

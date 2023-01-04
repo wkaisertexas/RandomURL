@@ -1,9 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client-id" content="773799551224-26h68o05tobeef832aemshm4dr6ff8a9.apps.googleusercontent.com">
+    <meta name="og:image" content="{% static 'logo.png' %}">
+
     <title>{% block title %}Random URL Shortener - Generate Shortened Links with Multiple Destinations{% endblock %}</title>
 
     <link rel="icon" href="{% static 'random.ico' %}">
@@ -30,6 +33,8 @@
         gtag('config', 'G-ZK2VHDQ674');
     </script>
     
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
     {% block scripts %}
     {% endblock %}
 </head>
@@ -59,6 +64,7 @@
                     {% else %}
                         <a href="{% url 'login' %}" class="btn btn-primary btn-lg active" role="button"
                            aria-pressed="true">Login</a>
+                        <div class="g-signin2" data-onsuccess="onSignIn">Login with Google</div>
                         <a href="{% url 'account-creation' %}" class="btn btn-primary btn-lg active" role="button"
                            aria-pressed="true">Sign Up</a>
                     {% endif %}
