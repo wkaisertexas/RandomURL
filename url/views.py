@@ -8,9 +8,7 @@ from django.views.generic import TemplateView, View, CreateView, DeleteView
 
 from .forms import *
 from .models import *
-
-
-# Create your views here.
+from bots import is_bot
 
 class Index(TemplateView):
     template_name = 'index.html'
@@ -147,8 +145,13 @@ def get_dest(request, link_string):
     """
     Redirects the user to a random page.
     """
+    # Provides a guard against the user not being a bot
+    
+    if is_bot(request.headers.get('User-Agent')):
+        return HttpResponseRedirect(reverse_lazy('index')) # Redirects to the homepage so the og image is correct
+    
     dest = get_object_or_404(URL, link_string=link_string)
-    print("Got dest")
+
     url = urlparse(dest.get_destination())
     if not url.scheme:
         url = url._replace(scheme="http")

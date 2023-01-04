@@ -1,4 +1,5 @@
 # Random URL
+<img align="center" src="url/static/logo.png" />
 Allows people to create URLs that randomly redirect to a list a websites. 
 
 The probability of going to each site is defined in advance. 
