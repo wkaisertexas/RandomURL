@@ -12,7 +12,7 @@ from google.auth.transport import requests
 
 from .forms import *
 from .models import *
-from bots import is_bot
+from .bots import is_bot
 
 CLIENT_ID = "773799551224-26h68o05tobeef832aemshm4dr6ff8a9.apps.googleusercontent.com"
 
